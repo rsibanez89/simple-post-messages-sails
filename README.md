@@ -36,9 +36,10 @@ We don't need a user for this example so we are not going to create a user api. 
 	```
 	
 that will create two files
-	-	api/controllers/MessageController.js
-	- api/models/Message.js
 
+	..- api/controllers/MessageController.js
+	..- api/models/Message.js
+	
 7. edit the message model to ensure it has the next attributes
 
 	```js
@@ -51,11 +52,54 @@ that will create two files
 
 8. start the app
 
-		```sh
-	  $ sails lift
-		```
+	```sh
+	$ sails lift
+	```
 		
 Once you modify the sails project it will throw you a warning, because you didn't configure what to do with the stored data. You got 3 options, select 2 for now. Or edit the file "config/models.js" uncommenting the line "migrate: 'safe'"
 
-9. go to http://localhost:1337/message
+9. go to http://localhost:1337/message/
+
 it will return a json object with all the create messages []. None for now.
+
+10. create a view for the message. Remove the contet form the homepage, we are not going to need it, and add the following HTML code.
+
+```html
+<div id="newMessage">
+  <h1>Add a new message</h1>
+
+  <form action="/message" method="post">
+
+    <div class="field-wrap">
+      <label>
+        Full Name<span class="req">*</span>
+      </label>
+      <input name="author" type="text" required autocomplete="off" />
+    </div>
+
+    <div class="field-wrap">
+      <label>
+        Email Address<span class="req">*</span>
+      </label>
+      <input name="email" type="email" required autocomplete="off"/>
+    </div>
+
+    <div class="field-wrap">
+      <label>
+        Message<span class="req">*</span>
+      </label>
+	  <textarea name="content" required>Enter text here...</textarea>
+    </div>
+
+    <button type="submit" class="button button-block"/>Post</button>
+
+  </form>
+</div>
+```
+
+11. start the app and go to http://localhost:1337/. 
+
+its is awful, It doesn't have any style and it doesn't make any validation. It just store what I send in the form. But, its working. We can add new messages and then go to http://localhost:1337/message/ and check them all.
+
+
+	
