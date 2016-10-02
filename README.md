@@ -38,7 +38,7 @@ We don't need a user for this example so we are not going to create a user api. 
 	$ sails generate api message
 	```
 	
-That will create two files
+	That will create two files
 
 	- "api/controllers/MessageController.js"
 	- "api/models/Message.js"
@@ -65,7 +65,7 @@ Once you modify the sails project it will throw you a warning because you didn't
 
 It will return a json object with all the created messages []. None for now.
 
-5. Create a view for the message. Remove all the contet form the "view/homepage.ejs", we are not going to need it. Add the following HTML code.
+5. Remove all the contet form the "view/homepage.ejs", we are not going to need it. Add the following HTML code.
 
 	```html
 	<div id="newMessage">
@@ -100,7 +100,7 @@ It will return a json object with all the created messages []. None for now.
 	</div>
 	```
 
-Note that we just included the content, we didn't include the header of the HTML. That is because sails inject this code inside "view/layout.ejs" where the tag "<%- body %>" is.
+Note that we just included the content (body of the HTML), we didn't include the header of the HTML. That is because sails inject this code inside "view/layout.ejs" where the tag "<%- body %>" is.
 
 6. Start the app and go to http://localhost:1337/. 
 
@@ -116,14 +116,14 @@ It is awful, It doesn't have any style and it doesn't validate any data. It just
 
 2. Modify the "config/routes.js"
 
-	Replace these lines. This code is saying: everytime someone hit '/' render the view homepage.
+	Replace these lines. (This code is saying: everytime someone hit '/' render the view homepage)
 	```js
 	'/': {
 		view: 'homepage'
 	}
 	```
 	
-	With this one. This code is saying: everytime someone hit '/' execute the function index in the HomepageController.
+	With this one. (This code is saying: everytime someone hit '/' execute the function index in the HomepageController)
 	```js
 	'/': 'HomepageController.index'
 	```
@@ -137,7 +137,7 @@ It is awful, It doesn't have any style and it doesn't validate any data. It just
 	}
 	```
 
-if we start the app now, seems that nothing changed but the application now is going throw the HomepageController when we hit '/', we can verify that by adding a new message and seeing the console.
+If we start the app now, seems that nothing changed but the application now is going through the HomepageController when we hit '/', we can verify that by adding a new message and seeing the console.
 
 4. Modify the "view/homepage.ejs" to see all the stored messages. Add the following HTML code
 
@@ -175,3 +175,5 @@ if we start the app now, seems that nothing changed but the application now is g
 		}
 	}
 	```
+
+6. Start the app and go to http://localhost:1337/. Now you can see all the stored messages and add new messages. 
