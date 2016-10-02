@@ -9,6 +9,15 @@ module.exports = {
 
 	index: function(req, res, next) {
 		console.log("MessageController  was called");
-		res.view('homepage');
+		Message.find(function messagesFounded(err, messages) {
+				if (err) {
+					console.log(err);
+					return next(err);
+				}
+				res.view('homepage',
+				{
+					'messages': messages
+				});
+			});
 	}
 };

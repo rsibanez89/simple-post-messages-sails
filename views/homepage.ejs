@@ -1,3 +1,21 @@
+<div id="messages">
+	<h1>All my messages</h1>
+
+  <table>
+		<th>Name</th>
+		<th>Message</th>
+
+    <% _.each(messages, function(message) { %>
+		<tr>
+			<td><%=message.author%></td>
+			<td><%=message.content%></td>
+		</tr>
+		<%})%>
+    
+	</table>
+
+</div>
+
 <div id="newMessage">
   <h1>Add a new message</h1>
 
