@@ -5,7 +5,7 @@ This application allow you to post messages and remove them.
 ## Doing it yourself
 ### Setting up the environment
 1. Install nodejs (https://nodejs.org/)
-2. Install sails (remember tu use admin rights when open CMD, I'm using windows)
+2. Install sails (remember to use admin rights when open CMD, I'm using windows)
 
 	```sh
 	$ npm -g install sails
@@ -30,7 +30,7 @@ Nothing new, that is the staring guide from sails (http://sailsjs.org/get-starte
 
 ### Posting messages
 
-We don't need a user for this example so we are not going to create a user api. Instead we are going to ceate a message api
+We don't need a user for this example so we are not going to create a user api. Instead we are going to create a message api
 
 1. Create the Message model and the MessageController controller
 
@@ -65,7 +65,7 @@ Once you modify the sails project it will throw you a warning because you didn't
 
 It will return a json object with all the created messages []. None for now.
 
-5. Remove all the contet form the "view/homepage.ejs", we are not going to need it. Add the following HTML code.
+5. Remove all the content form the "view/homepage.ejs", we are not going to need it. Add the following HTML code.
 
 	```html
 	<div id="newMessage">
@@ -104,7 +104,7 @@ Note that we just included the content (body of the HTML), we didn't include the
 
 6. Start the app and go to http://localhost:1337/. 
 
-It is awful, It doesn't have any style and it doesn't validate any data. It just store what I send in the form but it's working. We can add new messages and then go to http://localhost:1337/message/ and check them all.
+It is awful, It doesn't have any style and it doesn't validate any data. It just store what I send in the form but it's working. We can add new messages and then go to http://localhost:1337/message/ and check them all. Actually, depending on the browser it can check the email is a valid email address.
 
 ### Showing the stored messages
 
@@ -116,14 +116,14 @@ It is awful, It doesn't have any style and it doesn't validate any data. It just
 
 2. Modify the "config/routes.js"
 
-	Replace these lines. (This code is saying: everytime someone hit '/' render the view homepage)
+	Replace these lines. (This code is saying: every time someone hit '/' render the view homepage)
 	```js
 	'/': {
 		view: 'homepage'
 	}
 	```
 	
-	With this one. (This code is saying: everytime someone hit '/' execute the function index in the HomepageController)
+	With this one. (This code is saying: every time someone hit '/' execute the function index in the HomepageController)
 	```js
 	'/': 'HomepageController.index'
 	```
@@ -132,7 +132,7 @@ It is awful, It doesn't have any style and it doesn't validate any data. It just
 
 	```js
 	index: function(req, res, next) {
-		console.log("MessageController  was called");
+		console.log("HomepageController  was called");
 		res.view('homepage');
 	}
 	```
@@ -161,7 +161,7 @@ If we start the app now, seems that nothing changed but the application now is g
 
 	```js
 	index: function(req, res, next) {
-		console.log("MessageController  was called");
+		console.log("HomepageController  was called");
 		Message.find(function messagesFounded(err, messages) {
 				if (err) {
 					console.log(err);
@@ -205,3 +205,41 @@ If we start the app now, seems that nothing changed but the application now is g
 	```
 
 2. Start the app and go to http://localhost:1337/. Now you can see all the stored messages, delete some messages, and add new messages.
+
+### Redirecting to homepage after addig and deleting messages
+
+1. Modify the "api/controllers/MessageController.js". Create two method create and destroy.
+
+	```js
+	create: function(req, res){
+		console.log("MessageController.create  was called");
+		var messagesJSON = {
+			author: req.param('author'),
+			email: req.param('email'),
+			content: req.param('content'),
+		}
+
+		Message.create(messagesJSON, function(err, message) {
+			if (err) {
+				console.log(err);
+			}
+			return res.redirect('homepage');
+		});
+
+	},
+
+	destroy: function  (req, res, next) {
+		console.log("MessageController.destroy  was called");
+		Message.destroy(req.param('id'), function(err) {
+			if(err){
+				console.log(err);
+			}
+			res.redirect('homepage');
+		});
+	}
+	```
+
+Note that create and destroy are called without defining the routes, as we did with the homepage. That is because sails automatically maps the following URLs
+
+	- 'POST /message' : 'MessageController.create'
+	- 'POST /message/destroy/:id' : 'MessageController.destroy'

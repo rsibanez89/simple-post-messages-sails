@@ -8,7 +8,7 @@
 module.exports = {
 
 	index: function(req, res, next) {
-		console.log("MessageController  was called");
+		console.log("HomepageController  was called");
 		Message.find(function messagesFounded(err, messages) {
 				if (err) {
 					console.log(err);

@@ -32,7 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': 'HomepageController.index'
+  '/': 'HomepageController.index',
+  //'POST /message' : 'MessageController.create',
+  //'POST /message/destroy/:id' : 'MessageController.destroy'
 
 
   /***************************************************************************
