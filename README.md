@@ -94,7 +94,7 @@ It will return a json object with all the created messages []. None for now.
 		  <textarea name="content" required>Enter text here...</textarea>
 		</div>
 
-		<button type="submit" class="button button-block"/>Post</button>
+		<button type="submit" class="button"/>Post</button>
 
 	  </form>
 	</div>
@@ -177,3 +177,31 @@ If we start the app now, seems that nothing changed but the application now is g
 	```
 
 6. Start the app and go to http://localhost:1337/. Now you can see all the stored messages and add new messages. 
+
+### Deleting messages
+
+1. Modify the "view/homepage.ejs". Add the following HTML code
+
+	```html
+	<div id="messages">
+	  <h1>All my messages</h1>
+	  <table>
+		<th>Name</th>
+		<th>Message</th>
+		<th>Delete</th>
+		<% _.each(messages, function(message) { %>
+		  <tr>
+			<td><%=message.author%></td>
+			<td><%=message.content%></td>
+			<td>
+			  <form action="/message/destroy/<%=message.id%>" method="post">
+				<button type="submit" class="button"/>Delete</button>
+			  </form>
+			</td>
+		  </tr>
+		  <%})%>
+		</table>
+	  </div>
+	```
+
+2. Start the app and go to http://localhost:1337/. Now you can see all the stored messages, delete some messages, and add new messages.

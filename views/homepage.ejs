@@ -1,48 +1,53 @@
 <div id="messages">
-	<h1>All my messages</h1>
+  <h1>All my messages</h1>
 
   <table>
-		<th>Name</th>
-		<th>Message</th>
-
+    <th>Name</th>
+    <th>Message</th>
+    <th>Delete</th>
     <% _.each(messages, function(message) { %>
-		<tr>
-			<td><%=message.author%></td>
-			<td><%=message.content%></td>
-		</tr>
-		<%})%>
-    
-	</table>
+      <tr>
+        <td><%=message.author%></td>
+        <td><%=message.content%></td>
+        <td>
+          <form action="/message/destroy/<%=message.id%>" method="post">
+            <button type="submit" class="button"/>Delete</button>
+          </form>
+        </td>
+      </tr>
+      <%})%>
 
-</div>
+    </table>
 
-<div id="newMessage">
-  <h1>Add a new message</h1>
+  </div>
 
-  <form action="/message" method="post">
+  <div id="newMessage">
+    <h1>Add a new message</h1>
 
-    <div class="field-wrap">
-      <label>
-        Full Name<span class="req">*</span>
-      </label>
-      <input name="author" type="text" required autocomplete="off" />
-    </div>
+    <form action="/message" method="post">
 
-    <div class="field-wrap">
-      <label>
-        Email Address<span class="req">*</span>
-      </label>
-      <input name="email" type="email" required autocomplete="off"/>
-    </div>
+      <div class="field-wrap">
+        <label>
+          Full Name<span class="req">*</span>
+        </label>
+        <input name="author" type="text" required autocomplete="off" />
+      </div>
 
-    <div class="field-wrap">
-      <label>
-        Message<span class="req">*</span>
-      </label>
-      <textarea name="content" required>Enter text here...</textarea>
-    </div>
+      <div class="field-wrap">
+        <label>
+          Email Address<span class="req">*</span>
+        </label>
+        <input name="email" type="email" required autocomplete="off"/>
+      </div>
 
-    <button type="submit" class="button button-block"/>Post</button>
+      <div class="field-wrap">
+        <label>
+          Message<span class="req">*</span>
+        </label>
+        <textarea name="content" required>Enter text here...</textarea>
+      </div>
 
-  </form>
-</div>
+      <button type="submit" class="button"/>Post</button>
+
+    </form>
+  </div>
