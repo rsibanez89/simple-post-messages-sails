@@ -157,7 +157,7 @@ If we start the app now, seems that nothing changed but the application now is g
 	</div>
 	```
 
-5. Now we have to define the 'messages' variable, so go to the "api/controllers/HomepageController.js" and modify the index function
+5. Now we have to define the **messages** variable, so go to the "api/controllers/HomepageController.js" and modify the index function
 
 	```js
 	index: function(req, res, next) {
@@ -206,7 +206,7 @@ If we start the app now, seems that nothing changed but the application now is g
 
 2. Start the app and go to http://localhost:1337/. Now you can see all the stored messages, delete some messages, and add new messages.
 
-### Redirecting to homepage after addig and deleting messages
+### Redirecting to homepage after adding and deleting messages
 
 1. Modify the "api/controllers/MessageController.js". Create two method create and destroy.
 
@@ -239,7 +239,7 @@ If we start the app now, seems that nothing changed but the application now is g
 	}
 	```
 
-Note that create and destroy are called without defining the routes, as we did with the homepage. That is because sails automatically maps the following URLs
+Note that **create** and **destroy** are called without defining the routes, as we did with the homepage. That is because sails automatically maps the following URLs
 
 	- 'POST /message' : 'MessageController.create'
 	- 'POST /message/destroy/:id' : 'MessageController.destroy'
