@@ -1,4 +1,4 @@
-# Example application to learn sailsjs
+# Example application to learn sails
 Simple web application developed by using Nodejs + Sails.
 This application allow you to post messages and remove them.
 
