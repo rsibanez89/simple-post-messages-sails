@@ -2,7 +2,7 @@
 Simple web application developed by using Nodejs + Sails.
 This application allow you to post messages and remove them.
 
-[![Build Status](https://travis-ci.org/rsibanez89/simple-post-messages-sails.svg?branch=master)]
+![Build Status](https://travis-ci.org/rsibanez89/simple-post-messages-sails.svg?branch=master)
 
 ## Doing it yourself
 ### Setting up the environment
