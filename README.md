@@ -1,6 +1,6 @@
 # Example application to learn sails
 Simple web application developed by using Nodejs + Sails.
-This application allow you to post messages and remove them.
+This application allows you to post messages and remove them.
 
 ![Build Status](https://travis-ci.org/rsibanez89/simple-post-messages-sails.svg?branch=master)
 
@@ -139,7 +139,7 @@ It is awful, It doesn't have any style and it doesn't validate any data. It just
 	}
 	```
 
-If we start the app now, seems that nothing changed but the application now is going through the HomepageController when we hit '/', we can verify that by adding a new message and seeing the console.
+If we start the app now, seems that nothing changed but the application now is going through the HomepageController when we hit '/', we can verify that by adding a new message and checking the console output in the server side.
 
 4. Modify the "view/homepage.ejs" to see all the stored messages. Add the following HTML code
 
